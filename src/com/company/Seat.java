@@ -3,11 +3,10 @@ package com.company;
 public class Seat {
     private String seatNumber;
     private double price;
-    private boolean reserved;
+    private boolean reserved = false;
 
-    public Seat(String seatNumber, double price) {
+    public Seat(String seatNumber) {
         this.seatNumber = seatNumber;
-        this.price = price;
     }
 
     public String getSeatNumber() {
@@ -26,11 +25,22 @@ public class Seat {
         this.price = price;
     }
 
-    public boolean isReserved() {
-        return reserved;
+    public boolean seatReserve() {
+        if(!this.reserved){
+            this.reserved = true;
+            System.out.println("Seat "+seatNumber+" reserved");
+            return true;
+        }else{
+            return false;
+        }
     }
-
-    public void setReserved(boolean reserved) {
-        this.reserved = reserved;
+    public boolean seatCancel(){
+        if(!this.reserved){
+            this.reserved = true;
+            System.out.println("Reservation of seat "+seatNumber+" cancelled");
+            return true;
+        }else{
+            return false;
+        }
     }
 }
