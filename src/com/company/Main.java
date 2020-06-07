@@ -1,15 +1,32 @@
 package com.company;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Theatre floorOne = new Theatre("IMAX Room", 10,14);
+        Theatre floorOne = new Theatre("IMAX", 10,14);
 	    Theatre floorTwo = new Theatre("Standard Room One", 8, 12);
+//	    floorOne.getSeats();
+//	    if(floorOne.reserveSeat("C11")){
+//            System.out.println("Please pay");
+//        }else{
+//            System.out.println("Seat already reserved");
+//        }
 
-	    floorOne.getSeats();
-	    if(floorOne.reserveSeat("C18")){
-            System.out.println("Please pay");
+	    List<Seat> priceSeats = new ArrayList<>(floorOne.getSeats());
+        Collections.sort(priceSeats, Theatre.PRICE_ORDER);
+        priceList(priceSeats);
+
+        List<Seat> priceSeats2 = new ArrayList<>(floorTwo.getSeats());
+        Collections.sort(priceSeats2, Theatre.PRICE_ORDER);
+        priceList(priceSeats2);
+    }
+    public static void priceList(List<Seat> list){
+        for(Seat seat : list){
+            System.out.print(" "+seat.getSeatNumber()+" $"+seat.getPrice());
         }
-//	    floorTwo.getSeats();
+        System.out.println();
+        System.out.println("==========================");
     }
 }

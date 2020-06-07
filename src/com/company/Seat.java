@@ -1,12 +1,20 @@
 package com.company;
 
-public class Seat {
+import java.util.Comparator;
+// To improve reserve seat method and its performance, implements Comparable
+public class Seat implements Comparable<Seat> {
     private String seatNumber;
     private double price;
     private boolean reserved = false;
 
-    public Seat(String seatNumber) {
+    public Seat(String seatNumber, double price) {
         this.seatNumber = seatNumber;
+        this.price = price;
+    }
+
+    @Override
+    public int compareTo(Seat seat) {
+        return this.seatNumber.compareToIgnoreCase(seat.getSeatNumber());
     }
 
     public String getSeatNumber() {
