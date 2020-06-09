@@ -7,20 +7,24 @@ public class Main {
     public static void main(String[] args) {
         Theatre floorOne = new Theatre("IMAX", 10,14);
 	    Theatre floorTwo = new Theatre("Standard Room One", 8, 12);
-//	    floorOne.getSeats();
-//	    if(floorOne.reserveSeat("C11")){
-//            System.out.println("Please pay");
-//        }else{
-//            System.out.println("Seat already reserved");
-//        }
 
 	    List<Seat> priceSeats = new ArrayList<>(floorOne.getSeats());
-        Collections.sort(priceSeats, Theatre.PRICE_ORDER);
-        priceList(priceSeats);
+//        Collections.sort(priceSeats, Theatre.PRICE_ORDER);
+//        priceList(priceSeats);
+//
+//        List<Seat> priceSeats2 = new ArrayList<>(floorTwo.getSeats());
+//        Collections.sort(priceSeats2, Theatre.PRICE_ORDER);
+//        priceList(priceSeats2);
 
-        List<Seat> priceSeats2 = new ArrayList<>(floorTwo.getSeats());
-        Collections.sort(priceSeats2, Theatre.PRICE_ORDER);
-        priceList(priceSeats2);
+        if(floorOne.reserveSeat("D06")){
+            for(Seat seat : priceSeats){
+                if(seat.getSeatNumber().equals("D06")){
+                    System.out.println("Please pay: $"+seat.getPrice()+" for "+seat.getSeatNumber());
+                }
+            }
+        }else{
+            System.out.println("Seat already reserved");
+        }
     }
     public static void priceList(List<Seat> list){
         for(Seat seat : list){
